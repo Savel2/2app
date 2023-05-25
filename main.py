@@ -17,14 +17,20 @@ with col2:
 
 st.write("Hayu Hai! kak ti chert?")
 
-col3,col4 = st.columns(2) 
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5]) #we have added the third column(empty_col) in order to creat space between two columns. Also there are demensions in the square breckets
 
 df = pandas.read_csv("data.csv", sep= ";")
 
 with col3:
     for index,row in df[:10].iterrows(): #these method gives access to the rows
         st.header(row["title"])
+        st.write(row["description"]) 
+        st.image("images/" + row["image"]) 
+        st.write(f"[Source Code]({row['url']})")  #method for inserting the url. In square breckets there is name of the text(button) and link is inside parenthetes
 
 with col4:
     for index,row in df[10:].iterrows(): 
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])  
+        st.write(f"[Source Code]({row['url']})")
